@@ -18,26 +18,6 @@
          "title":"Source Category",
          "minLength":1,
          "maxLength":1024
-      },
-      "fields":{
-         "type":"object",
-         "properties":{
-            "_siemForward":{
-               "type":"boolean",
-               "title":"Forward to SIEM",
-               "default":false,
-               "flag":{
-                  "type":"featureFlag",
-                  "name":"UIHTTPSiemForward"
-               }
-            }
-         },
-         "additionalProperties":{
-            "title":"Fields",
-            "type":"string",
-            "minLength":1,
-            "maxLength":200
-         }
       }
    },
    "required":[
