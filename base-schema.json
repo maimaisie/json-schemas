@@ -4,12 +4,13 @@
       "name":{
          "type":"string",
          "title":"Name",
-         "minLength":1
+         "minLength":1,
+         "maxLength":128
       },
       "description":{
          "type":"string",
          "title":"Description",
-         "minLength":1,
+         "minLength":-1,
          "maxLength":1024
       },
       "category":{
