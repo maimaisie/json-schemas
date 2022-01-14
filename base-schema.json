@@ -4,8 +4,7 @@
       "name":{
          "type":"string",
          "title":"Name",
-         "minLength":1,
-         "maxLength":128
+         "minLength":1
       },
       "description":{
          "type":"string",
