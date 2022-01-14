@@ -1,0 +1,25 @@
+{
+   "type":"object",
+   "properties":{
+      "name":{
+         "type":"string",
+         "title":"Name",
+         "minLength":1,
+         "maxLength":128
+      },
+      "description":{
+         "type":"string",
+         "title":"Description",
+         "minLength":1
+      },
+      "category":{
+         "type":"string",
+         "title":"Source Category",
+         "minLength":1,
+         "maxLength":1024
+      }
+   },
+   "required":[
+      "name"
+   ]
+}
