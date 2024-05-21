@@ -32,7 +32,7 @@
     "resources": [
         {
             "type": "Microsoft.Authorization/roleAssignments",
-            "apiVersion": "2024-05-01",
+            "apiVersion": "2022-04-01",
             "name": "[guid(parameters('managementGroupName'), 'monitoring reader', parameters('servicePrincipalObjectId'))]",
             "properties": {
                 "principalId": "[parameters('servicePrincipalObjectId')]",
