@@ -36,6 +36,10 @@
     "utcValue": {
       "type": "string",
       "defaultValue": "[utcNow()]"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {
@@ -60,7 +64,7 @@
       "type": "Microsoft.Resources/deploymentScripts",
       "apiVersion": "2019-10-01-preview",
       "name": "[variables('cliResourceName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "kind": "AzureCLI",
       "identity": {
         "type": "UserAssigned",
