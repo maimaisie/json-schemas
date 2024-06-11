@@ -64,7 +64,6 @@
       "type": "Microsoft.Resources/deploymentScripts",
       "apiVersion": "2019-10-01-preview",
       "name": "[variables('cliResourceName')]",
-      "location": "[parameters('location')]",
       "kind": "AzureCLI",
       "identity": {
         "type": "UserAssigned",
