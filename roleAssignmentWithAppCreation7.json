@@ -36,10 +36,6 @@
     "utcValue": {
       "type": "string",
       "defaultValue": "[utcNow()]"
-    },
-    "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {
