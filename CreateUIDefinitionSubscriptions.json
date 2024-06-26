@@ -1,0 +1,85 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+    "handler": "Microsoft.Azure.CreateUIDef",
+    "version": "0.1.2-preview",
+    "parameters": {
+        "basics": [
+            {
+                "name": "armio",
+                "type": "Microsoft.Solutions.ArmApiControl",
+                "request": {
+                    "method": "POST",
+                    "path": "/providers/Microsoft.Management/getEntities?api-version=2020-05-01"
+                }
+            },
+            {
+                "name": "location",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Location",
+                "defaultValue": "global",
+                "toolTip": "Resources location",
+                "visible": false
+            }
+        ],
+        "steps": [
+            {
+                "name": "appRegisteration",
+                "label": "App Registration",
+                "elements": [
+                    {
+                        "name": "ServicePrincipal",
+                        "type": "Microsoft.Common.ServicePrincipalSelector",
+                        "label": {
+                            "servicePrincipalId": "Service Principal Id",
+                            "password": "Client secret",
+                            "sectionHeader": "Service Principal"
+                        },
+                        "toolTip": {
+                            "servicePrincipalId": "Service Principal Id"
+                        },
+                        "defaultValue": {
+                            "principalId": "<default guid>",
+                            "name": "(New) default App Id"
+                        },
+                        "constraints": {
+                            "required": true,
+                            "validationMessage": "Must be a valid client secret"
+                        },
+                        "options": {
+                            "hideCertificate": true
+                        },
+                        "visible": true
+                    }
+                ]
+            },
+            {
+                "name": "Subscriptions",
+                "label": "Subscriptions",
+                "elements": [
+                    {
+                        "name": "subscriptions",
+                        "type": "Microsoft.Common.DropDown",
+                        "label": "Subscriptions to collect metrics from",
+                        "filterPlaceholder": "Select one or more subscriptions to monitor",
+                        "filter": true,
+                        "multiselect": true,
+                        "selectAll": true,
+                        "defaultValue": "[]",
+                        "constraints": {
+                            "allowedValues": "[map(filter(steps('basics').armio.value, (i)=>and(   not(equals(i.type, 'Microsoft.Management/managementGroups')),   not(and(equals(i.properties.permissions, 'noaccess'),equals(i.properties.inheritedPermissions, 'noaccess')))  )), (item)=> parse(concat('{\"label\":\"', item.properties.displayName, '\",\"value\":\"', item.name, '\"}')))]",
+                            "required": false
+                        },
+                        "visible": true
+                    }
+                ]
+            }
+        ],
+        "outputs": {
+            "location": "[location()]",
+            "servicePrincipalClientId": "[steps('appRegisteration').ServicePrincipal.appId]",
+            "servicePrincipalObjectId": "[first(steps('appRegisteration').ServicePrincipal.objectId)]",
+            "servicePrincipalClientSecret": "[steps('appRegisteration').ServicePrincipal.password]",
+            "subscriptions": "[steps('subscriptions').subscriptions]"
+        }
+    }
+}
