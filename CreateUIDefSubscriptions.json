@@ -53,7 +53,7 @@
                 ]
             },
             {
-                "name": "Subscriptions",
+                "name": "subscriptions",
                 "label": "Subscriptions",
                 "elements": [
                     {
