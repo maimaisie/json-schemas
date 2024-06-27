@@ -49,7 +49,7 @@
                 "count":"[length(parameters('subscriptions'))]"
             },
             "type": "Microsoft.Resources/deployments",
-            "apiVersion":"2022-04-01",
+            "apiVersion":"2024-03-01",
             "name": "[concat('roleAssignment-', parameters('newguid'), copyIndex())]",
             "subscriptionId": "[parameters('subscriptions')[copyIndex()]]",
             "location": "[parameters('location')]",
