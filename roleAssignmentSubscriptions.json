@@ -51,7 +51,7 @@
             "type": "Microsoft.Resources/deployments",
             "apiVersion":"2022-04-01",
             "name": "[concat('roleAssignment-', parameters('newguid'), copyIndex())]",
-            "subscriptionId": "[parameters('subscriptionsList')[copyIndex()]]",
+            "subscriptionId": "[parameters('subscriptions')[copyIndex()]]",
             "location": "[parameters('location')]",
             "properties":{
                 "parameters": {},
