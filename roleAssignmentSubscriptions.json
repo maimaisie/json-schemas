@@ -46,7 +46,7 @@
         {
             "copy":{
                 "name":"subscriptionsCopy",
-                "count":"[length(range(0, parameters('subscriptions')))]"
+                "count":"[length(parameters('subscriptions'))]"
             },
             "type": "Microsoft.Resources/deployments",
             "apiVersion":"2022-04-01",
