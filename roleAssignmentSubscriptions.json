@@ -54,6 +54,7 @@
             "subscriptionId": "[parameters('subscriptions')[copyIndex()]]",
             "location": "[parameters('location')]",
             "properties":{
+                "mode": "Incremental",
                 "parameters": {},
                 "template": {
                     "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
