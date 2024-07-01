@@ -8,18 +8,6 @@
                 "description":"Service principal object Id, needed for Role Assignment"
             }
         },
-        "servicePrincipalClientId":{
-            "type":"string",
-            "metadata":{
-                "description":"Service principal Client Id"
-            }
-        },
-        "servicePrincipalClientSecret":{
-            "type":"securestring",
-            "metadata":{
-                "description":"Service principal client secret"
-            }
-        },
         "subscriptions":{
             "type":"array",
             "defaultValue":"[subscription().id]",
