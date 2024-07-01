@@ -5,12 +5,21 @@
     "parameters": {
         "basics": [
             {
-                "name": "armio",
-                "type": "Microsoft.Solutions.ArmApiControl",
-                "request": {
-                    "method": "POST",
-                    "path": "/providers/Microsoft.Management/getEntities?api-version=2020-05-01"
-                }
+              "name": "infoBox1",
+              "type": "Microsoft.Common.InfoBox",
+              "visible": true,
+              "options": {
+                "icon": "Info",
+                "text": "This 'Basics' tab defines where the template will be deployed, not what data will be collected by Sumo Logic. You will specify where Sumo will pull data from in the 'Subscriptions' tab."
+              }
+            },
+            {
+              "name": "armio",
+              "type": "Microsoft.Solutions.ArmApiControl",
+              "request": {
+                  "method": "POST",
+                  "path": "/providers/Microsoft.Management/getEntities?api-version=2020-05-01"
+              }
             },
             {
                 "name": "location",
@@ -27,6 +36,14 @@
                 "label": "App Registration",
                 "elements": [
                     {
+                        "name": "infoBox2",
+                        "type": "Microsoft.Common.InfoBox",
+                        "visible": true,
+                        "options": {
+                          "icon": "Info",
+                          "text": "In this section you will create an app registration or select an existing one for Sumo Logic to authenticate to your Azure resources. A new tab will open when you click 'Make/Change selection' where you can create or select an existing app. Create a new Client Secret in the app registration page and copy the value. Return to this template page by clicking the Close (X) button on the top-right corner after making the selection."
+                        }
+                    },{
                         "name": "ServicePrincipal",
                         "type": "Microsoft.Common.ServicePrincipalSelector",
                         "label": {
@@ -56,6 +73,15 @@
                 "name": "subscriptions",
                 "label": "Subscriptions",
                 "elements": [
+					{
+                        "name": "infoBox3",
+                        "type": "Microsoft.Common.InfoBox",
+                        "visible": true,
+                        "options": {
+                          "icon": "Info",
+                          "text": "In this section you can select which Subscriptions you would like Sumo Logic to monitor. After deploying this template, the app specified in the previous tab will be granted 'Monitoring Reader' permission to the list of Subscriptions selected here."
+                        }
+                    },
                     {
                         "name": "subscriptions",
                         "type": "Microsoft.Common.DropDown",
@@ -78,7 +104,6 @@
             "location": "[location()]",
             "servicePrincipalClientId": "[steps('appRegisteration').ServicePrincipal.appId]",
             "servicePrincipalObjectId": "[first(steps('appRegisteration').ServicePrincipal.objectId)]",
-            "servicePrincipalClientSecret": "[steps('appRegisteration').ServicePrincipal.password]",
             "subscriptions": "[steps('subscriptions').subscriptions]"
         }
     }
