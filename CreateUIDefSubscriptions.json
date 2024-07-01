@@ -103,7 +103,6 @@
         "outputs": {
             "location": "[location()]",
             "servicePrincipalClientId": "[steps('appRegisteration').ServicePrincipal.appId]",
-            "servicePrincipalObjectId": "[first(steps('appRegisteration').ServicePrincipal.objectId)]",
             "subscriptions": "[steps('subscriptions').subscriptions]"
         }
     }
